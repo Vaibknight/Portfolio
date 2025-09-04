@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vaibhav Tiwari - Full Stack Developer</title>
+    <meta
+      name="description"
+      content="Full Stack Developer delivering pixel-perfect UIs and robust backends with React, JavaScript, and Node.js."
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Custom Styles -->
+    <style>
+      :root {
+        --primary: #00d4ff;
+        --secondary: #ff6b6b;
+        --accent: #4ecdc4;
+        --dark-bg: #0a0a0a;
+        --card-bg: #1a1a1a;
+        --light-bg: #ffffff;
+        --light-card: #f8fafc;
+      }
+
+      /* Enhanced theme system with smooth transitions */
+      * {
+        transition: background-color 0.3s ease, color 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .dark body {
+        background: var(--dark-bg);
+        color: white;
+      }
+
+      .light body {
+        background: var(--light-bg);
+        color: #1a202c;
+      }
+
+      .font-mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      /* Enhanced gradient text with better animation */
+      .gradient-text {
+        background: linear-gradient(135deg, #00d4ff, #4ecdc4, #ff6b6b, #9333ea);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient-shift 4s ease-in-out infinite;
+      }
+
+      @keyframes gradient-shift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        25% {
+          background-position: 100% 50%;
+        }
+        50% {
+          background-position: 100% 100%;
+        }
+        75% {
+          background-position: 0% 100%;
+        }
+      }
+
+      /* More sophisticated floating animations */
+      .floating-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-slow {
+        animation: float-slow 8s ease-in-out infinite;
+      }
+
+      .floating-fast {
+        animation: float-fast 4s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg) scale(1);
+        }
+        33% {
+          transform: translateY(-15px) rotate(2deg) scale(1.05);
+        }
+        66% {
+          transform: translateY(-5px) rotate(-1deg) scale(0.98);
+        }
+      }
+
+      @keyframes float-slow {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-25px) rotate(3deg);
+        }
+      }
+
+      @keyframes float-fast {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(-2deg);
+        }
+      }
+
+      /* Enhanced pulse glow with color variations */
+      .pulse-glow {
+        animation: pulse-glow 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(0, 212, 255, 0.3),
+            0 0 40px rgba(0, 212, 255, 0.1);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(0, 212, 255, 0.6),
+            0 0 80px rgba(78, 205, 196, 0.3);
+          transform: scale(1.02);
+        }
+      }
+
+      /* Enhanced typing animation */
+      .typing-animation {
+        overflow: hidden;
+        border-right: 3px solid #00d4ff;
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end),
+          blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #00d4ff;
+        }
+      }
+
+      /* More sophisticated hover effects */
+      .hover-lift {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .hover-lift:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 25px 50px rgba(0, 212, 255, 0.25);
+      }
+
+      /* Enhanced card styling with theme support */
+      .card-glow {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+      }
+
+      .dark .card-glow {
+        background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+      }
+
+      .light .card-glow {
+        background: linear-gradient(145deg, #ffffff, #f1f5f9);
+        border-color: rgba(0, 212, 255, 0.3);
+      }
+
+      .card-glow:hover {
+        border-color: rgba(0, 212, 255, 0.6);
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+      }
+
+      /* Enhanced skill bars with better animation */
+      .skill-bar {
+        transition: width 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        background: linear-gradient(90deg, #00d4ff, #4ecdc4, #9333ea);
+        background-size: 200% 100%;
+        animation: skill-shimmer 3s ease-in-out infinite;
+      }
+
+      @keyframes skill-shimmer {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* Enhanced navigation with better active states */
+      .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background: linear-gradient(135deg, #00d4ff, #4ecdc4);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 80%;
+      }
+
+      .nav-link:hover {
+        background: rgba(0, 212, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* Enhanced matrix background with theme support */
+      .matrix-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0.1;
+      }
+
+      .light .matrix-bg {
+        opacity: 0.05;
+      }
+
+      .code-rain {
+        position: absolute;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        animation: rain 12s linear infinite;
+      }
+
+      .dark .code-rain {
+        color: #00d4ff;
+      }
+
+      .light .code-rain {
+        color: #4338ca;
+      }
+
+      @keyframes rain {
+        0% {
+          transform: translateY(-100vh) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Enhanced theme toggle button */
+      .theme-toggle {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1) rotate(15deg);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+      }
+
+      /* Enhanced project cards with better hover effects */
+      .project-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 212, 255, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .project-card:hover::before {
+        left: 100%;
+      }
+
+      /* Enhanced form styling with theme support */
+      .form-input {
+        transition: all 0.3s ease;
+      }
+
+      .dark .form-input {
+        background: #1a1a1a;
+        border-color: #374151;
+        color: white;
+      }
+
+      .light .form-input {
+        background: white;
+        border-color: #d1d5db;
+        color: #1f2937;
+      }
+
+      .form-input:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 212, 255, 0.15);
+      }
+
+      /* Smooth scroll behavior enhancement */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Enhanced section transitions */
+      section {
+        position: relative;
+        overflow: hidden;
+      }
+
+      section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 212, 255, 0.3),
+          transparent
+        );
+      }
+
+      /* Enhanced mobile responsiveness */
+      @media (max-width: 768px) {
+        .floating-animation,
+        .floating-slow,
+        .floating-fast {
+          animation-duration: 3s;
+        }
+
+        .hover-lift:hover {
+          transform: translateY(-5px) scale(1.02);
+        }
+      }
+    </style>
+  </head>
+  <body class="transition-all duration-300">
+    <!-- Matrix Background -->
+    <div class="matrix-bg" id="matrix-bg"></div>
+
+    <!-- Enhanced navigation with better theme support -->
+    <nav
+      class="fixed top-0 w-full backdrop-blur-md z-50 border-b transition-all duration-300 dark:bg-gray-900/80 dark:border-gray-800 light:bg-white/80 light:border-gray-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div
+            class="text-2xl font-bold gradient-text font-mono hover:scale-110 transition-transform duration-300"
+          >
+            {'<Disha />'}
+          </div>
+
+          <div class="hidden md:flex space-x-2">
+            <a
+              href="#home"
+              class="nav-link dark:text-gray-300 dark:hover:text-cyan-400 light:text-gray-600 light:hover:text-blue-600"
+              >home()</a
+            >
+            <a
+              href="#about"
+              class="nav-link dark:text-gray-300 dark:hover:text-cyan-400 light:text-gray-600 light:hover:text-blue-600"
+              >about()</a
+            >
+            <a
+              href="#skills"
+              class="nav-link dark:text-gray-300 dark:hover:text-cyan-400 light:text-gray-600 light:hover:text-blue-600"
+              >skills()</a
+            >
+            <a
+              href="#projects"
+              class="nav-link dark:text-gray-300 dark:hover:text-cyan-400 light:text-gray-600 light:hover:text-blue-600"
+              >projects()</a
+            >
+            <a
+              href="#contact"
+              class="nav-link dark:text-gray-300 dark:hover:text-cyan-400 light:text-gray-600 light:hover:text-blue-600"
+              >contact()</a
+            >
+          </div>
+
+          <button
+            id="theme-toggle"
+            class="theme-toggle p-3 rounded-xl transition-all duration-300 dark:bg-gray-800 dark:hover:bg-gray-700 light:bg-gray-100 light:hover:bg-gray-200"
+          >
+            <svg
+              id="sun-icon"
+              class="w-5 h-5 text-yellow-500 hidden light:block"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              />
+            </svg>
+            <svg
+              id="moon-icon"
+              class="w-5 h-5 text-cyan-400 dark:block light:hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 dark:bg-gray-900 light:bg-gradient-to-br light:from-blue-50 light:to-indigo-100"
+    >
+      <!-- Enhanced animated background elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <!-- Geometric shapes with enhanced animations -->
+        <svg
+          class="absolute top-20 left-10 w-32 h-32 text-cyan-400 opacity-20 floating-animation"
+          viewBox="0 0 100 100"
+          fill="currentColor"
+        >
+          <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" />
+          <circle
+            cx="50"
+            cy="50"
+            r="15"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <path
+            d="M35 35 L65 35 L65 65 L35 65 Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            opacity="0.5"
+          />
+        </svg>
+
+        <svg
+          class="absolute top-40 right-20 w-24 h-24 text-red-400 opacity-30 floating-slow"
+          viewBox="0 0 100 100"
+          fill="currentColor"
+        >
+          <path d="M50 10 L90 90 L10 90 Z" />
+          <circle cx="50" cy="60" r="8" fill="white" />
+          <path
+            d="M40 50 L60 50 M50 40 L50 70"
+            stroke="white"
+            stroke-width="2"
+          />
+        </svg>
+
+        <svg
+          class="absolute bottom-20 left-20 w-28 h-28 text-teal-400 opacity-25 floating-fast"
+          viewBox="0 0 100 100"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <rect x="20" y="20" width="60" height="60" rx="10" />
+          <path d="M30 50 L45 65 L70 35" />
+          <circle cx="75" cy="25" r="5" fill="currentColor" />
+        </svg>
+
+        <svg
+          class="absolute top-1/2 right-10 w-20 h-20 text-purple-400 opacity-20 floating-animation"
+          viewBox="0 0 100 100"
+          fill="currentColor"
+        >
+          <circle cx="50" cy="50" r="40" />
+          <circle
+            cx="50"
+            cy="50"
+            r="20"
+            fill="none"
+            stroke="white"
+            stroke-width="3"
+          />
+          <path
+            d="M30 30 L70 70 M70 30 L30 70"
+            stroke="white"
+            stroke-width="2"
+          />
+        </svg>
+      </div>
+
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
+      >
+        <div data-aos="fade-up" data-aos-duration="1000">
+          <!-- Enhanced developer icon -->
+          <div class="mb-8 flex justify-center">
+            <svg
+              class="w-40 h-40 floating-animation"
+              viewBox="0 0 200 200"
+              fill="none"
+            >
+              <!-- Laptop Screen -->
+              <rect
+                x="40"
+                y="60"
+                width="120"
+                height="80"
+                rx="8"
+                fill="#1a1a1a"
+                stroke="#00d4ff"
+                stroke-width="2"
+              />
+              <rect
+                x="45"
+                y="65"
+                width="110"
+                height="60"
+                rx="4"
+                fill="#0a0a0a"
+              />
+
+              <!-- Code lines -->
+              <rect x="50" y="75" width="30" height="3" rx="1" fill="#00d4ff" />
+              <rect x="85" y="75" width="20" height="3" rx="1" fill="#4ecdc4" />
+              <rect
+                x="110"
+                y="75"
+                width="15"
+                height="3"
+                rx="1"
+                fill="#ff6b6b"
+              />
+              <rect x="50" y="85" width="40" height="3" rx="1" fill="#ff6b6b" />
+              <rect x="95" y="85" width="25" height="3" rx="1" fill="#00d4ff" />
+              <rect x="50" y="95" width="35" height="3" rx="1" fill="#4ecdc4" />
+              <rect x="90" y="95" width="30" height="3" rx="1" fill="#9333ea" />
+              <rect
+                x="50"
+                y="105"
+                width="45"
+                height="3"
+                rx="1"
+                fill="#00d4ff"
+              />
+
+              <!-- Laptop Base -->
+              <ellipse cx="100" cy="145" rx="60" ry="8" fill="#2a2a2a" />
+              <ellipse cx="100" cy="143" rx="55" ry="6" fill="#3a3a3a" />
+
+              <!-- Floating code symbols -->
+              <g class="floating-slow">
+                <text
+                  x="20"
+                  y="40"
+                  fill="#00d4ff"
+                  font-family="JetBrains Mono"
+                  font-size="16"
+                >
+                  &lt;/&gt;
+                </text>
+              </g>
+              <g class="floating-fast">
+                <text
+                  x="160"
+                  y="50"
+                  fill="#4ecdc4"
+                  font-family="JetBrains Mono"
+                  font-size="14"
+                >
+                  {}
+                </text>
+              </g>
+              <g class="floating-animation">
+                <text
+                  x="30"
+                  y="170"
+                  fill="#ff6b6b"
+                  font-family="JetBrains Mono"
+                  font-size="12"
+                >
+                  []
+                </text>
+              </g>
+              <g class="floating-slow">
+                <text
+                  x="170"
+                  y="160"
+                  fill="#9333ea"
+                  font-family="JetBrains Mono"
+                  font-size="18"
+                >
+                  ()
+                </text>
+              </g>
+            </svg>
+          </div>
+
+          <h1 class="text-6xl md:text-8xl font-bold mb-6 font-mono">
+            <span class="gradient-text">Vaibhav Tiwari</span>
+          </h1>
+
+          <div
+            class="text-2xl md:text-3xl mb-8 h-12 font-mono dark:text-gray-300 light:text-gray-700"
+          >
+            <span id="typing-text" class="typing-animation"
+              >Full Stack Developer</span
+            >
+          </div>
+
+          <p
+            class="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed dark:text-gray-400 light:text-gray-600"
+          >
+            Full Stack Developer delivering pixel-perfect UIs and robust
+            backends with
+            <span class="text-cyan-400">React</span>,
+            <span class="text-teal-400">JavaScript</span> &
+            <span class="text-teal-400">Node.js.</span>
+          </p>
+
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <a
+              href="#projects"
+              class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold rounded-lg transition-all duration-300 hover-lift pulse-glow"
+            >
+              View Projects
+            </a>
+            <a
+              href="#contact"
+              class="px-8 py-4 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white rounded-lg font-semibold transition-all duration-300 hover-lift"
+            >
+              Let's Connect
+            </a>
+          </div>
+
+          <!-- Social links -->
+          <div class="flex justify-center space-x-6 mt-12">
+            <a
+              href="mailto:tiwarivaibhav1410@gmail.com"
+              class="p-3 rounded-full transition-all duration-300 hover-lift dark:text-gray-400 dark:hover:text-cyan-400 light:text-gray-600 light:hover:text-blue-600 hover:bg-cyan-400/10"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/vaibhavt14/"
+              class="p-3 rounded-full transition-all duration-300 hover-lift dark:text-gray-400 dark:hover:text-cyan-400 light:text-gray-600 light:hover:text-blue-600 hover:bg-cyan-400/10"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/Vaibknight"
+              class="p-3 rounded-full transition-all duration-300 hover-lift dark:text-gray-400 dark:hover:text-cyan-400 light:text-gray-600 light:hover:text-blue-600 hover:bg-cyan-400/10"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.627-5.373-12-12-12"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 dark:bg-gray-800 light:bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-4xl md:text-5xl font-bold mb-6 gradient-text font-mono"
+          >
+            about.me()
+          </h2>
+          <p
+            class="text-xl dark:text-gray-400 light:text-gray-600 max-w-3xl mx-auto"
+          >
+            Passionate developer crafting digital experiences that blend
+            creativity with functionality
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right" data-aos-duration="1000">
+            <!-- Enhanced about illustration -->
+            <svg
+              class="w-full h-80 floating-slow"
+              viewBox="0 0 400 300"
+              fill="none"
+            >
+              <!-- Computer setup -->
+              <rect
+                x="50"
+                y="120"
+                width="200"
+                height="120"
+                rx="10"
+                fill="#1a1a1a"
+                stroke="#00d4ff"
+                stroke-width="2"
+              />
+              <rect
+                x="60"
+                y="130"
+                width="180"
+                height="90"
+                rx="5"
+                fill="#0a0a0a"
+              />
+
+              <!-- Code on screen -->
+              <rect
+                x="70"
+                y="140"
+                width="60"
+                height="4"
+                rx="2"
+                fill="#00d4ff"
+              />
+              <rect
+                x="140"
+                y="140"
+                width="40"
+                height="4"
+                rx="2"
+                fill="#4ecdc4"
+              />
+              <rect
+                x="70"
+                y="155"
+                width="80"
+                height="4"
+                rx="2"
+                fill="#ff6b6b"
+              />
+              <rect
+                x="160"
+                y="155"
+                width="30"
+                height="4"
+                rx="2"
+                fill="#9333ea"
+              />
+              <rect
+                x="70"
+                y="170"
+                width="70"
+                height="4"
+                rx="2"
+                fill="#4ecdc4"
+              />
+              <rect
+                x="150"
+                y="170"
+                width="50"
+                height="4"
+                rx="2"
+                fill="#00d4ff"
+              />
+
+              <!-- Monitor stand -->
+              <rect x="140" y="240" width="20" height="30" fill="#2a2a2a" />
+              <ellipse cx="150" cy="275" rx="40" ry="8" fill="#2a2a2a" />
+
+              <!-- Floating elements -->
+              <g class="floating-animation">
+                <circle cx="320" cy="80" r="20" fill="#00d4ff" opacity="0.3" />
+                <text
+                  x="308"
+                  y="85"
+                  fill="white"
+                  font-family="JetBrains Mono"
+                  font-size="12"
+                >
+                  Node
+                </text>
+              </g>
+
+              <g class="floating-fast">
+                <rect
+                  x="300"
+                  y="150"
+                  width="45"
+                  height="30"
+                  rx="5"
+                  fill="#4ecdc4"
+                  opacity="0.3"
+                />
+                <text
+                  x="308"
+                  y="170"
+                  fill="white"
+                  font-family="JetBrains Mono"
+                  font-size="10"
+                >
+                  React
+                </text>
+              </g>
+
+              <g class="floating-slow">
+                <polygon
+                  points="280,200 300,220 280,240 260,220"
+                  fill="#ff6b6b"
+                  opacity="0.3"
+                />
+                <text
+                  x="272"
+                  y="225"
+                  fill="white"
+                  font-family="JetBrains Mono"
+                  font-size="8"
+                >
+                  PHP
+                </text>
+              </g>
+            </svg>
+          </div>
+
+          <div data-aos="fade-left" data-aos-duration="1000">
+            <div class="space-y-6">
+              <div class="card-glow p-6 rounded-xl hover-lift">
+                <h3 class="text-2xl font-bold mb-4 text-cyan-400 font-mono">
+                  const developer = {
+                </h3>
+                <div
+                  class="space-y-3 font-mono text-sm dark:text-gray-300 light:text-gray-700"
+                >
+                  <p>
+                    <span class="text-teal-400">name:</span>
+                    <span class="text-yellow-400">"Vaibhav Tiwari"</span>,
+                  </p>
+                  <p>
+                    <span class="text-teal-400">location:</span>
+                    <span class="text-yellow-400">"Bilaspur, Chhattisgarh"</span
+                    >,
+                  </p>
+                  <p>
+                    <span class="text-teal-400">education:</span>
+                    <span class="text-yellow-400"
+                      >"Masters in Computer Application"</span
+                    >,
+                  </p>
+                  <p>
+                    <span class="text-teal-400">profession:</span>
+                    <span class="text-yellow-400">"Full Stack Developer"</span>,
+                  </p>
+                  <p>
+                    <span class="text-teal-400">experience:</span>
+                    <span class="text-yellow-400">"3+ years"</span>
+                  </p>
+                </div>
+                <p class="text-cyan-400 font-mono mt-4">}</p>
+              </div>
+
+              <p
+                class="text-lg leading-relaxed dark:text-gray-300 light:text-gray-700"
+              >
+                I specialize in creating responsive, user-friendly web
+                applications using modern technologies. My journey combines
+                mathematical problem-solving with creative design thinking.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 dark:bg-gray-900 light:bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-4xl md:text-5xl font-bold mb-6 gradient-text font-mono"
+          >
+            skills.array()
+          </h2>
+          <p class="text-xl dark:text-gray-400 light:text-gray-600">
+            Technologies I work with to bring ideas to life
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Frontend Skills -->
+          <div
+            class="card-glow p-6 rounded-xl hover-lift"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="flex items-center mb-4">
+              <svg
+                class="w-8 h-8 text-cyan-400 mr-3"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2L2 7v10c0 5.55 3.84 9.739 9 11 5.16-1.261 9-5.45 9-11V7l-10-5z"
+                />
+              </svg>
+              <h3
+                class="text-xl font-bold dark:text-white light:text-gray-900 font-mono"
+              >
+                Frontend
+              </h3>
+            </div>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >React.js</span
+                  >
+                  <span class="text-cyan-400">90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >JavaScript</span
+                  >
+                  <span class="text-cyan-400">85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >TypeScript</span
+                  >
+                  <span class="text-cyan-400">90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >HTML/CSS</span
+                  >
+                  <span class="text-cyan-400">95%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="95"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Frameworks -->
+          <div
+            class="card-glow p-6 rounded-xl hover-lift"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="flex items-center mb-4">
+              <svg
+                class="w-8 h-8 text-teal-400 mr-3"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"
+                />
+              </svg>
+              <h3
+                class="text-xl font-bold dark:text-white light:text-gray-900 font-mono"
+              >
+                Tools
+              </h3>
+            </div>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >Git/GitHub</span
+                  >
+                  <span class="text-teal-400">80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >AWS</span
+                  >
+                  <span class="text-teal-400">75%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >Bootstrap</span
+                  >
+                  <span class="text-teal-400">85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="85"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div
+            class="card-glow p-6 rounded-xl hover-lift"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="flex items-center mb-4">
+              <svg
+                class="w-8 h-8 text-purple-400 mr-3"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
+              <h3
+                class="text-xl font-bold dark:text-white light:text-gray-900 font-mono"
+              >
+                Backend
+              </h3>
+            </div>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >Node.js</span
+                  >
+                  <span class="text-purple-400">85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >PHP</span
+                  >
+                  <span class="text-purple-400">80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="dark:text-gray-300 light:text-gray-700"
+                    >MYSQL</span
+                  >
+                  <span class="text-purple-400">80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar h-2 rounded-full" data-width="80"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 dark:bg-gray-800 light:bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-4xl md:text-5xl font-bold mb-6 gradient-text font-mono"
+          >
+            projects.showcase()
+          </h2>
+          <p class="text-xl dark:text-gray-400 light:text-gray-600">
+            Featured work that demonstrates my skills and creativity
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div
+            class="project-card card-glow rounded-xl overflow-hidden hover-lift"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <svg
+                  class="w-8 h-8 text-cyan-400 mr-3"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  />
+                </svg>
+                <h3
+                  class="text-xl font-bold dark:text-white light:text-gray-900"
+                >
+                  Ecommerce Website
+                </h3>
+              </div>
+              <p class="dark:text-gray-400 light:text-gray-600 mb-4">
+                Full-stack e-commerce solution built with MERN, featuring cart,
+                checkout, and Razorpay-powered payments."
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-cyan-400/20 text-cyan-400 rounded-full text-sm"
+                  >React</span
+                >
+                <span
+                  class="px-3 py-1 bg-teal-400/20 text-teal-400 rounded-full text-sm"
+                  >JavaScript</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-400/20 text-purple-400 rounded-full text-sm"
+                  >API</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="https://github.com/Vaibknight/E-commerce"
+                  class="text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.627-5.373-12-12-12"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  class="text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
+                    />
+                    <polyline points="14,2 14,8 20,8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10,9 9,9 8,9" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <!-- <div
+            class="project-card card-glow rounded-xl overflow-hidden hover-lift"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <svg
+                  class="w-8 h-8 text-teal-400 mr-3"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"
+                  />
+                </svg>
+                <h3
+                  class="text-xl font-bold dark:text-white light:text-gray-900"
+                >
+                  Business Solutions
+                </h3>
+              </div>
+              <p class="dark:text-gray-400 light:text-gray-600 mb-4">
+                Responsive business landing page with smooth animations, contact
+                forms, and modern UI/UX design.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-teal-400/20 text-teal-400 rounded-full text-sm"
+                  >HTML</span
+                >
+                <span
+                  class="px-3 py-1 bg-cyan-400/20 text-cyan-400 rounded-full text-sm"
+                  >CSS</span
+                >
+                <span
+                  class="px-3 py-1 bg-red-400/20 text-red-400 rounded-full text-sm"
+                  >JavaScript</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="https://github.com/DishaS31/AppDevPro-site"
+                  class="text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.627-5.373-12-12-12"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  class="text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
+                    />
+                    <polyline points="14,2 14,8 20,8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10,9 9,9 8,9" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Project 3 -->
+          <div
+            class="project-card card-glow rounded-xl overflow-hidden hover-lift"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <svg
+                  class="w-8 h-8 text-purple-400 mr-3"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <h3
+                  class="text-xl font-bold dark:text-white light:text-gray-900"
+                >
+                  Admin Portal
+                </h3>
+              </div>
+              <p class="dark:text-gray-400 light:text-gray-600 mb-4">
+                Advanced admin dashboard with JavaScript plugins, email editor,
+                and enhanced user experience features.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-purple-400/20 text-purple-400 rounded-full text-sm"
+                  >JavaScript</span
+                >
+                <span
+                  class="px-3 py-1 bg-red-400/20 text-red-400 rounded-full text-sm"
+                  >Bootstrap</span
+                >
+                <span
+                  class="px-3 py-1 bg-cyan-400/20 text-cyan-400 rounded-full text-sm"
+                  >Plugins</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="https://github.com/DishaS31/Email-Editor"
+                  class="text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.627-5.373-12-12-12"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  class="text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
+                    />
+                    <polyline points="14,2 14,8 20,8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10,9 9,9 8,9" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 dark:bg-gray-900 light:bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-4xl md:text-5xl font-bold mb-6 gradient-text font-mono"
+          >
+            contact.connect()
+          </h2>
+          <p class="text-xl dark:text-gray-400 light:text-gray-600">
+            Let's collaborate and build something amazing together
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right" data-aos-duration="1000">
+            <!-- Enhanced contact illustration -->
+            <svg
+              class="w-full h-80 floating-animation"
+              viewBox="0 0 400 300"
+              fill="none"
+            >
+              <!-- Email envelope -->
+              <rect
+                x="80"
+                y="100"
+                width="240"
+                height="160"
+                rx="10"
+                fill="#1a1a1a"
+                stroke="#00d4ff"
+                stroke-width="2"
+              />
+              <path
+                d="M80 120 L200 180 L320 120"
+                stroke="#00d4ff"
+                stroke-width="3"
+                fill="none"
+              />
+
+              <!-- Floating @ symbol -->
+              <g class="floating-slow">
+                <circle cx="350" cy="80" r="20" fill="#4ecdc4" opacity="0.3" />
+                <text
+                  x="343"
+                  y="87"
+                  fill="white"
+                  font-family="JetBrains Mono"
+                  font-size="20"
+                >
+                  @
+                </text>
+              </g>
+
+              <!-- Message lines -->
+              <rect
+                x="100"
+                y="140"
+                width="80"
+                height="4"
+                rx="2"
+                fill="#00d4ff"
+                opacity="0.7"
+              />
+              <rect
+                x="100"
+                y="160"
+                width="120"
+                height="4"
+                rx="2"
+                fill="#4ecdc4"
+                opacity="0.7"
+              />
+              <rect
+                x="100"
+                y="180"
+                width="100"
+                height="4"
+                rx="2"
+                fill="#ff6b6b"
+                opacity="0.7"
+              />
+              <rect
+                x="100"
+                y="200"
+                width="140"
+                height="4"
+                rx="2"
+                fill="#9333ea"
+                opacity="0.7"
+              />
+
+              <!-- Send button -->
+              <rect
+                x="250"
+                y="220"
+                width="60"
+                height="25"
+                rx="12"
+                fill="#00d4ff"
+              />
+              <text
+                x="270"
+                y="237"
+                fill="white"
+                font-family="JetBrains Mono"
+                font-size="12"
+              >
+                Send
+              </text>
+
+              <!-- Floating elements -->
+              <g class="floating-fast">
+                <rect
+                  x="50"
+                  y="50"
+                  width="15"
+                  height="15"
+                  rx="3"
+                  fill="#ff6b6b"
+                  opacity="0.4"
+                />
+              </g>
+              <g class="floating-animation">
+                <circle cx="60" cy="250" r="8" fill="#9333ea" opacity="0.4" />
+              </g>
+            </svg>
+          </div>
+
+          <div data-aos="fade-left" data-aos-duration="1000">
+            <div class="space-y-8">
+              <!-- Contact Info -->
+              <div class="card-glow p-6 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6 text-cyan-400 font-mono">
+                  Get In Touch
+                </h3>
+
+                <div class="space-y-4">
+                  <a
+                    href="mailto:ds121205@gmail.com"
+                    class="flex items-center p-4 rounded-lg transition-all duration-300 hover:bg-cyan-400/10 hover-lift"
+                  >
+                    <svg
+                      class="w-6 h-6 text-cyan-400 mr-4"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                      />
+                    </svg>
+                    <div>
+                      <p
+                        class="font-semibold dark:text-white light:text-gray-900"
+                      >
+                        Email
+                      </p>
+                      <p class="dark:text-gray-400 light:text-gray-600">
+                        tiwarivaibhav1410@gmail.com
+                      </p>
+                    </div>
+                  </a>
+
+                  <a
+                    href="tel:+919162614570"
+                    class="flex items-center p-4 rounded-lg transition-all duration-300 hover:bg-cyan-400/10 hover-lift"
+                  >
+                    <svg
+                      class="w-6 h-6 text-teal-400 mr-4"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+                      />
+                    </svg>
+                    <div>
+                      <p
+                        class="font-semibold dark:text-white light:text-gray-900"
+                      >
+                        Phone
+                      </p>
+                      <p class="dark:text-gray-400 light:text-gray-600">
+                        +91 6261991735
+                      </p>
+                    </div>
+                  </a>
+
+                  <div class="flex items-center p-4 rounded-lg">
+                    <svg
+                      class="w-6 h-6 text-purple-400 mr-4"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                      />
+                    </svg>
+                    <div>
+                      <p
+                        class="font-semibold dark:text-white light:text-gray-900"
+                      >
+                        Location
+                      </p>
+                      <p class="dark:text-gray-400 light:text-gray-600">
+                        Bilaspur, Chhattisgarh
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Contact Form -->
+              <div class="card-glow p-6 rounded-xl">
+                <h3
+                  class="text-xl font-bold mb-4 dark:text-white light:text-gray-900 font-mono"
+                >
+                  Quick Message
+                </h3>
+                <form class="space-y-4" onsubmit="sendWhatsApp(event)">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:border-cyan-400"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                    class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:border-cyan-400"
+                  />
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    rows="4"
+                    required
+                    class="form-input w-full px-4 py-3 rounded-lg border focus:outline-none focus:border-cyan-400 resize-none"
+                  ></textarea>
+                  <button
+                    type="submit"
+                    class="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold rounded-lg transition-all duration-300 hover-lift pulse-glow"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-8 border-t dark:bg-gray-900 dark:border-gray-800 light:bg-white light:border-gray-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-2xl font-bold gradient-text font-mono mb-4 md:mb-0">
+            {'<Disha />'}
+          </div>
+          <p
+            class="dark:text-gray-400 light:text-gray-600 text-center md:text-right"
+          >
+            © 2024 Vaibhav Tiwari. Crafted with 💙 and lots of ☕
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+      });
+
+      // Enhanced theme toggle functionality
+      const themeToggle = document.getElementById("theme-toggle");
+      const html = document.documentElement;
+      const sunIcon = document.getElementById("sun-icon");
+      const moonIcon = document.getElementById("moon-icon");
+
+      // Check for saved theme preference or default to dark
+      const currentTheme = localStorage.getItem("theme") || "dark";
+      html.className = `scroll-smooth ${currentTheme}`;
+      updateThemeIcons(currentTheme);
+
+      themeToggle.addEventListener("click", () => {
+        const isDark = html.classList.contains("dark");
+        const newTheme = isDark ? "light" : "dark";
+
+        html.className = `scroll-smooth ${newTheme}`;
+        localStorage.setItem("theme", newTheme);
+        updateThemeIcons(newTheme);
+
+        // Add a subtle animation to the toggle
+        themeToggle.style.transform = "scale(0.9)";
+        setTimeout(() => {
+          themeToggle.style.transform = "scale(1)";
+        }, 150);
+      });
+
+      function updateThemeIcons(theme) {
+        if (theme === "dark") {
+          sunIcon.classList.add("hidden");
+          moonIcon.classList.remove("hidden");
+        } else {
+          sunIcon.classList.remove("hidden");
+          moonIcon.classList.add("hidden");
+        }
+      }
+
+      // Enhanced typing animation
+      const typingTexts = [
+        "Frontend Developer",
+        "React Specialist",
+        "UI/UX Enthusiast",
+        "Problem Solver",
+      ];
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typingElement = document.getElementById("typing-text");
+
+      function typeWriter() {
+        const currentText = typingTexts[textIndex];
+
+        if (isDeleting) {
+          typingElement.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typingElement.textContent = currentText.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentText.length) {
+          typeSpeed = 2000;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % typingTexts.length;
+          typeSpeed = 500;
+        }
+
+        setTimeout(typeWriter, typeSpeed);
+      }
+
+      // Start typing animation
+      setTimeout(typeWriter, 1000);
+
+      // Enhanced skill bar animations with intersection observer
+      const skillBars = document.querySelectorAll(".skill-bar");
+      const skillObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const width = entry.target.getAttribute("data-width");
+              entry.target.style.width = width + "%";
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      skillBars.forEach((bar) => {
+        skillObserver.observe(bar);
+      });
+
+      // Enhanced navigation with active states
+      const navLinks = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("section");
+
+      function updateActiveNav() {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      // Enhanced smooth scrolling with offset
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href");
+          const targetSection = document.querySelector(targetId);
+          const offsetTop = targetSection.offsetTop - 80;
+
+          window.scrollTo({
+            top: offsetTop,
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Update active nav on scroll
+      window.addEventListener("scroll", updateActiveNav);
+
+      // Enhanced matrix background animation
+      function createMatrixRain() {
+        const matrixBg = document.getElementById("matrix-bg");
+        const characters = "01{}[]()<>/\\;:.,?!@#$%^&*+-=|~`";
+
+        function createRainDrop() {
+          const drop = document.createElement("div");
+          drop.className = "code-rain";
+          drop.textContent =
+            characters[Math.floor(Math.random() * characters.length)];
+          drop.style.left = Math.random() * 100 + "%";
+          drop.style.animationDuration = Math.random() * 8 + 4 + "s";
+          drop.style.opacity = Math.random() * 0.5 + 0.1;
+
+          matrixBg.appendChild(drop);
+
+          setTimeout(() => {
+            drop.remove();
+          }, 12000);
+        }
+
+        // Create rain drops at intervals
+        setInterval(createRainDrop, 200);
+      }
+
+      // Start matrix rain
+      createMatrixRain();
+
+      // Enhanced contact form functionality
+      //   function sendEmail(event) {
+      //     event.preventDefault();
+      //     const form = event.target;
+      //     const formData = new FormData(form);
+      //     const name = form.querySelector('input[type="text"]').value;
+      //     const email = form.querySelector('input[type="email"]').value;
+      //     const message = form.querySelector("textarea").value;
+
+      //     const subject = `Portfolio Contact from ${name}`;
+      //     const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+
+      //     window.location.href = `mailto:tiwarivaibhav1410@gmail.com?subject=${subject}&body=${body}`;
+
+      //     // Show success feedback
+      //     const button = form.querySelector("button");
+      //     const originalText = button.textContent;
+      //     button.textContent = "Message Sent!";
+      //     button.style.background = "linear-gradient(135deg, #10b981, #059669)";
+
+      //     setTimeout(() => {
+      //       button.textContent = originalText;
+      //       button.style.background = "";
+      //       form.reset();
+      //     }, 3000);
+      //   }
+
+      function sendWhatsApp(event) {
+        event.preventDefault();
+        const form = event.target;
+
+        const name = form.querySelector('input[name="name"]').value.trim();
+        const email = form.querySelector('input[name="email"]').value.trim();
+        const message = form
+          .querySelector('textarea[name="message"]')
+          .value.trim();
+
+        const whatsappNumber = "916261991735";
+
+        const text =
+          `New enquiry from portfolio:%0A` +
+          `Name: ${name}%0A` +
+          `Email: ${email}%0A%0A` +
+          `Message: ${message}`;
+
+        const url = `https://wa.me/${whatsappNumber}?text=${text}`;
+        window.open(url, "_blank");
+
+        // Button feedback
+        const button = form.querySelector("button");
+        const originalText = button.textContent;
+        button.textContent = "Opening WhatsApp...";
+        button.style.background = "linear-gradient(135deg, #10b981, #059669)";
+
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = "";
+          form.reset();
+        }, 2500);
+      }
+
+      // Enhanced scroll animations
+      let ticking = false;
+      function updateScrollAnimations() {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelectorAll(
+          ".floating-animation, .floating-slow, .floating-fast"
+        );
+
+        parallax.forEach((element) => {
+          const speed = element.classList.contains("floating-slow")
+            ? 0.5
+            : element.classList.contains("floating-fast")
+            ? 2
+            : 1;
+          const yPos = -(scrolled * speed * 0.1);
+          element.style.transform += ` translateY(${yPos}px)`;
+        });
+
+        ticking = false;
+      }
+
+      function requestScrollUpdate() {
+        if (!ticking) {
+          requestAnimationFrame(updateScrollAnimations);
+          ticking = true;
+        }
+      }
+
+      window.addEventListener("scroll", requestScrollUpdate);
+
+      // Enhanced mobile menu (if needed)
+      const mobileMenuButton = document.querySelector(".mobile-menu-button");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+
+      // Performance optimization: Reduce animations on mobile
+      if (window.innerWidth < 768) {
+        document
+          .querySelectorAll(
+            ".floating-animation, .floating-slow, .floating-fast"
+          )
+          .forEach((el) => {
+            el.style.animationDuration = "3s";
+          });
+      }
+
+      // Enhanced loading animation
+      window.addEventListener("load", () => {
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 0.5s ease-in-out";
+
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
